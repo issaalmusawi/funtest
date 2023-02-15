@@ -49,23 +49,23 @@ func main() {
 	flag.Parse()
 
 	if out == "C" && isFlagPassed("F") {
-		fmt.Println(fahrenheit, "°F is equal to °C", math.Round(FahrenheitToCelsius(fahrenheit)*100)/100)
+		fmt.Println(fahrenheit, "°F is equal to", math.Round(FahrenheitToCelsius(fahrenheit)*100)/100, "°C")
 	}
 
 	if out == "F" && isFlagPassed("C") {
-		fmt.Println(celsius, "°C is equal to °F", math.Round(CelsiusToFahrenheit(celsius)*100)/100)
+		fmt.Println(celsius, "°C is equal to", math.Round(CelsiusToFahrenheit(celsius)*100)/100, "°F")
 	}
 
 	if out == "K" && isFlagPassed("C") {
-		fmt.Println(celsius, "°C is equal to °K", math.Round(CelsiusToKelvin(celsius)*100)/100)
+		fmt.Println(celsius, "°C is equal to", math.Round(CelsiusToKelvin(celsius)*100)/100, "°K")
 	}
 
 	if out == "C" && isFlagPassed("K") {
-		fmt.Println(kelvin, "K is equal to °C", math.Round(KelvinToCelsius(kelvin)*100)/100)
+		fmt.Println(kelvin, "K is equal to", math.Round(KelvinToCelsius(kelvin)*100)/100, "°C")
 	}
 
 	if out == "F" && isFlagPassed("K") {
-		fmt.Println(kelvin, "K is equal to °F", math.Round(KelvinToFahrenheit(kelvin)*100)/100)
+		fmt.Println(kelvin, "K is equal to", math.Round(KelvinToFahrenheit(kelvin)*100)/100, "°F")
 	}
 
 }
