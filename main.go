@@ -3,13 +3,23 @@ package main
 import (
 	"flag"
 	"fmt"
+	"math"
 )
 
 var (
-	fahrenheitFlag = flag.Float64("f", 0.0, "temperature in Fahrenheit")
-	celsiusFlag    = flag.Float64("c", 0.0, "temperature in Celsius")
-	kelvinFlag     = flag.Float64("k", 0.0, "temperature in Kelvin")
+	fahrenheit float64
+	celsius    float64
+	kelvin     float64
+	out        string
 )
+
+func init() {
+	flag.Float64Var(&fahrenheit, "F", 0.0, "temprature in fahrenheit")
+	flag.Float64Var(&celsius, "C", 0.0, "temprature in celsius")
+	flag.Float64Var(&kelvin, "K", 0.0, "temprature in kelvin")
+	flag.StringVar(&out, "out", "C", "beregne temperatur i C - celsius, F - fahrenheit, K - kelvin")
+
+}
 
 func FahrenheitToCelsius(fahrenheit float64) float64 {
 	return (fahrenheit - 32) * 5 / 9
@@ -38,20 +48,34 @@ func KelvinToCelsius(kelvin float64) float64 {
 func main() {
 	flag.Parse()
 
-	if *fahrenheitFlag != 0.0 {
-		celsius := FahrenheitToCelsius(*fahrenheitFlag)
-		fmt.Printf("%.2f°F is equal to %.2f°C\n", *fahrenheitFlag, celsius)
+	if out == "C" && isFlagPassed("F") {
+		fmt.Println(fahrenheit, "°F is equal to °C", math.Round(FahrenheitToCelsius(fahrenheit)*100)/100)
 	}
 
-	if *celsiusFlag != 0.0 {
-		fahrenheit := CelsiusToFahrenheit(*celsiusFlag)
-		kelvin := CelsiusToKelvin(*celsiusFlag)
-		fmt.Printf("%.2f°C is equal to %.2f°F and %.2fK\n", *celsiusFlag, fahrenheit, kelvin)
+	if out == "F" && isFlagPassed("C") {
+		fmt.Println(celsius, "°C is equal to °F", math.Round(CelsiusToFahrenheit(celsius)*100)/100)
 	}
 
-	if *kelvinFlag != 0.0 {
-		fahrenheit := KelvinToFahrenheit(*kelvinFlag)
-		celsius := KelvinToCelsius(*kelvinFlag)
-		fmt.Printf("%.2fK is equal to %.2f°F and %.2f°C\n", *kelvinFlag, fahrenheit, celsius)
+	if out == "K" && isFlagPassed("C") {
+		fmt.Println(celsius, "°C is equal to °K", math.Round(CelsiusToKelvin(celsius)*100)/100)
 	}
+
+	if out == "C" && isFlagPassed("K") {
+		fmt.Println(kelvin, "K is equal to °C", math.Round(KelvinToCelsius(kelvin)*100)/100)
+	}
+
+	if out == "F" && isFlagPassed("K") {
+		fmt.Println(kelvin, "K is equal to °F", math.Round(KelvinToFahrenheit(kelvin)*100)/100)
+	}
+
+}
+
+func isFlagPassed(name string) bool {
+	found := false
+	flag.Visit(func(f *flag.Flag) {
+		if f.Name == name {
+			found = true
+		}
+	})
+	return found
 }
