@@ -17,8 +17,8 @@ func TestGetFunFacts(t *testing.T) {
 
 		{input: "Terra", expected: []Facts{
 			{Interesting: "høyeste temperatur målt på jordens overflate", Value: 56.7, temperatureType: "C"},
-			{Interesting: "laveste temperatur målt på jordens overflate", Value: -69.7, temperatureType: "C"},
-			{Interesting: "temperatur i jordens indre kjerne", Value: 9118.85, temperatureType: "C"}}},
+			{Interesting: "laveste temperatur målt på jordens overflate", Value: -89.4, temperatureType: "C"},
+			{Interesting: "temperatur i jordens indre kjerne", Value: 9392, temperatureType: "K"}}},
 
 		{input: "Luna", expected: []Facts{
 			{Interesting: "temperatur på månens overflate om natten", Value: -183, temperatureType: "C"},

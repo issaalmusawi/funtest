@@ -5,7 +5,6 @@ import (
 	"testing"
 )
 
-// Test for fahrenheit to Celsius
 func TestFahrenheitToCelsius(t *testing.T) {
 	testCases := []struct {
 		input    float64
@@ -25,7 +24,6 @@ func TestFahrenheitToCelsius(t *testing.T) {
 	}
 }
 
-// test for celsius to fahrenheit
 func TestCelsiusToFahrenheit(t *testing.T) {
 	testCases := []struct {
 		input    float64
