@@ -1,40 +1,40 @@
 package funfacts
 
-type FunFacts struct {
-	Sun, Luna, Terra []Facts
+type object struct {
+	Sun, Luna, Terra []Fact
 }
-type Facts struct {
-	Interesting     string
-	Value           float64
-	temperatureType string
+type Fact struct {
+	Text  string
+	Value float64
+	Type  string
 }
 
-func GetFunFacts(about string) []Facts {
-	fFacts := FunFacts{
-		Sun: []Facts{
-			{Interesting: "temperatur i solens kjerne", Value: 15000000, temperatureType: "C"},
-			{Interesting: "temperatur på ytre lag av solen", Value: 5778, temperatureType: "K"},
+func GetFunFacts(about string) []Fact {
+	Facts := object{
+		Sun: []Fact{
+			{Text: "temperatur i solens kjerne", Value: 15000000, Type: "C"},
+			{Text: "temperatur på ytre lag av solen", Value: 5778, Type: "K"},
 		},
 
-		Terra: []Facts{
-			{Interesting: "høyeste temperatur målt på jordens overflate", Value: 56.7, temperatureType: "C"},
-			{Interesting: "laveste temperatur målt på jordens overflate", Value: -69.7, temperatureType: "C"},
-			{Interesting: "temperatur i jordens indre kjerne", Value: 9118.85, temperatureType: "C"},
+		Terra: []Fact{
+			{Text: "høyeste temperatur målt på jordens overflate", Value: 56.7, Type: "C"},
+			{Text: "laveste temperatur målt på jordens overflate", Value: -89.4, Type: "C"},
+			{Text: "temperatur i jordens indre kjerne", Value: 9392, Type: "K"},
 		},
 
-		Luna: []Facts{
-			{Interesting: "temperatur på månens overflate om natten", Value: -183, temperatureType: "C"},
-			{Interesting: "temperatur på månens overflate om dagen", Value: 106, temperatureType: "C"},
+		Luna: []Fact{
+			{Text: "temperatur på månens overflate om natten", Value: -183, Type: "C"},
+			{Text: "temperatur på månens overflate om dagen", Value: 106, Type: "C"},
 		},
 	}
 
 	if about == "Sun" {
-		return fFacts.Sun
+		return Facts.Sun
 	} else if about == "Terra" {
-		return fFacts.Terra
+		return Facts.Terra
 	} else if about == "Luna" {
-		return fFacts.Luna
+		return Facts.Luna
 	} else {
-		return []Facts{}
+		return []Fact{}
 	}
 }

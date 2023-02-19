@@ -5,15 +5,18 @@ import (
 	"fmt"
 	"math"
 
+	//"github.com/issaalmusawi/funtest/funfacts"
 	conv "github.com/issaalmusawi/funtest/konv"
 )
 
 // definerer hoved variabler
 var (
-	fahrenheit float64
-	celsius    float64
-	kelvin     float64
-	out        string
+	fahrenheit      float64
+	celsius         float64
+	kelvin          float64
+	out             string
+	temperatureType string
+	Facts           string
 )
 
 // initialiserer variabel-flagg, der parameterne "pointer" til hovedvariablene over,
@@ -23,34 +26,11 @@ func init() {
 	flag.Float64Var(&celsius, "C", 0.0, "temprature in celsius")
 	flag.Float64Var(&kelvin, "K", 0.0, "temprature in kelvin")
 	flag.StringVar(&out, "out", "C", "beregne temperatur i C - celsius, F - fahrenheit, K - kelvin")
-
+	flag.StringVar(&Facts, "funfacts", "sun", "\"fun-facts\" om sun - Solen, luna - Månene og terra - Jorden")
+	flag.StringVar(&temperatureType, "t", "F", "temperatur i F- fahrenheit, K - kelvin, C - celsius")
 }
 
-/*
-	func FahrenheitToCelsius(fahrenheit float64) float64 {
-		return (fahrenheit - 32) * 5 / 9
-	}
-
-	func CelsiusToFahrenheit(celsius float64) float64 {
-		return (celsius * 9 / 5) + 32
-	}
-
-	func KelvinToFahrenheit(kelvin float64) float64 {
-		return (kelvin-273.15)*9/5 + 32
-	}
-
-	func CelsiusToKelvin(celsius float64) float64 {
-		return celsius + 273.15
-	}
-
-	func FahrenheitToKelvin(fahrenheit float64) float64 {
-		return (fahrenheit-32)*5/9 + 273.15
-	}
-
-	func KelvinToCelsius(kelvin float64) float64 {
-		return kelvin - 273.15
-	}
-*/
+// definerer hva diverse flagg skal utføre av funksjoner. Hvis "C" ut og "F" inn, gjør dette:...
 func main() {
 	flag.Parse()
 
@@ -74,6 +54,25 @@ func main() {
 		fmt.Println(kelvin, "K is equal to", math.Round(conv.KelvinToFahrenheit(kelvin)*100)/100, "°F")
 	}
 
+	//if out == "funfacts" && isFlagPassed("Sun") {
+	//fmt.Println(funfacts.GetFunFacts(Facts))
+	//}
+
+	/*if isFlagPassed("funfacts") && out == ("t") {
+		for _, object := range funfacts.GetFunFacts(Facts) {
+			if temperatureType == "C" && object.Type == "C" {
+				fmt.Println(object.Text, object.Value, object.Type)
+			}
+			//	{
+			//	if fFacts.Type == "K" {
+			//	fmt.Println(fFacts.Fact, fFacts.Value, fFacts.Type)
+		}
+	}
+
+	//{Fact: "temperatur i solens kjerne", Value: 15000000, Type: "C"},
+	//	{Fact: "temperatur på ytre lag av solen", Value: 5778, Type: "K"},
+	//},
+	*/
 }
 
 func isFlagPassed(name string) bool {

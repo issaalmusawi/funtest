@@ -8,21 +8,21 @@ import (
 func TestGetFunFacts(t *testing.T) {
 	type test struct {
 		input    string
-		expected []Facts
+		expected []Fact
 	}
 	tests := []test{
-		{input: "Sun", expected: []Facts{
-			{Interesting: "temperatur i solens kjerne", Value: 15000000, temperatureType: "C"},
-			{Interesting: "temperatur på ytre lag av solen", Value: 5778, temperatureType: "K"}}},
+		{input: "Sun", expected: []Fact{
+			{Text: "temperatur i solens kjerne", Value: 15000000, Type: "C"},
+			{Text: "temperatur på ytre lag av solen", Value: 5778, Type: "K"}}},
 
-		{input: "Terra", expected: []Facts{
-			{Interesting: "høyeste temperatur målt på jordens overflate", Value: 56.7, temperatureType: "C"},
-			{Interesting: "laveste temperatur målt på jordens overflate", Value: -89.4, temperatureType: "C"},
-			{Interesting: "temperatur i jordens indre kjerne", Value: 9392, temperatureType: "K"}}},
+		{input: "Terra", expected: []Fact{
+			{Text: "høyeste temperatur målt på jordens overflate", Value: 56.7, Type: "C"},
+			{Text: "laveste temperatur målt på jordens overflate", Value: -89.4, Type: "C"},
+			{Text: "temperatur i jordens indre kjerne", Value: 9392, Type: "K"}}},
 
-		{input: "Luna", expected: []Facts{
-			{Interesting: "temperatur på månens overflate om natten", Value: -183, temperatureType: "C"},
-			{Interesting: "temperatur på månens overflate om dagen", Value: 106, temperatureType: "C"}}},
+		{input: "Luna", expected: []Fact{
+			{Text: "temperatur på månens overflate om natten", Value: -183, Type: "C"},
+			{Text: "temperatur på månens overflate om dagen", Value: 106, Type: "C"}}},
 	}
 
 	for _, tc := range tests {
