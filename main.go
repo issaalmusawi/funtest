@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math"
 
-	//"github.com/issaalmusawi/funtest/funfacts"
+	"github.com/issaalmusawi/funtest/funfacts"
 	conv "github.com/issaalmusawi/funtest/konv"
 )
 
@@ -16,7 +16,7 @@ var (
 	kelvin          float64
 	out             string
 	temperatureType string
-	Facts           string
+	Fact            string
 )
 
 // initialiserer variabel-flagg, der parameterne "pointer" til hovedvariablene over,
@@ -26,7 +26,7 @@ func init() {
 	flag.Float64Var(&celsius, "C", 0.0, "temprature in celsius")
 	flag.Float64Var(&kelvin, "K", 0.0, "temprature in kelvin")
 	flag.StringVar(&out, "out", "C", "beregne temperatur i C - celsius, F - fahrenheit, K - kelvin")
-	flag.StringVar(&Facts, "funfacts", "sun", "\"fun-facts\" om sun - Solen, luna - Månene og terra - Jorden")
+	flag.StringVar(&Fact, "funfacts", "Sun", "\"fun-facts\" om sun - Solen, luna - Månene og terra - Jorden")
 	flag.StringVar(&temperatureType, "t", "F", "temperatur i F- fahrenheit, K - kelvin, C - celsius")
 }
 
@@ -54,9 +54,17 @@ func main() {
 		fmt.Println(kelvin, "K is equal to", math.Round(conv.KelvinToFahrenheit(kelvin)*100)/100, "°F")
 	}
 
-	//if out == "funfacts" && isFlagPassed("Sun") {
-	//fmt.Println(funfacts.GetFunFacts(Facts))
-	//}
+	if Fact == "Sun" && isFlagPassed("funfacts") {
+
+		fmt.Println(funfacts.GetFunFacts(Fact))
+	}
+
+	if Fact == "Luna" && isFlagPassed("funfacts") {
+		fmt.Println(funfacts.GetFunFacts(Fact))
+	}
+	if Fact == "Terra" && isFlagPassed("funfacts") {
+		fmt.Println(funfacts.GetFunFacts((Fact)))
+	}
 
 	/*if isFlagPassed("funfacts") && out == ("t") {
 		for _, object := range funfacts.GetFunFacts(Facts) {

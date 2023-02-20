@@ -9,5 +9,8 @@ Så, over til denne repo. Nå skal alle konverteringer fungere, da de ble testet
 
 Math.Round("funksjon"*100)/100) så ut til å gjøre magien. Så nå skal alt fungere, og igjen jeg tør ikke å gjøre noe som helst annereldes og velger å beholde denne "test" repo som min endelige innlevering. 
 
+Testing: 
+kommandolinje instruksjon for testing av konverteringer av temperatur, eksemepl: "./funtest -C 25 -out F" (returnerer 25 C i F)
 
+For funfacts(ikke helt ferdig) : "./funtest -funfacts Terra" (returnerer fakta til jorden)
 

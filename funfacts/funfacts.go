@@ -1,5 +1,7 @@
 package funfacts
 
+//"github.com/issaalmusawi/funtest/konv"
+
 type object struct {
 	Sun, Luna, Terra []Fact
 }
