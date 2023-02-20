@@ -16,7 +16,7 @@ var (
 	kelvin          float64
 	out             string
 	temperatureType string
-	Fact            string
+	Facts           string
 )
 
 // initialiserer variabel-flagg, der parameterne "pointer" til hovedvariablene over,
@@ -26,7 +26,7 @@ func init() {
 	flag.Float64Var(&celsius, "C", 0.0, "temprature in celsius")
 	flag.Float64Var(&kelvin, "K", 0.0, "temprature in kelvin")
 	flag.StringVar(&out, "out", "C", "beregne temperatur i C - celsius, F - fahrenheit, K - kelvin")
-	flag.StringVar(&Fact, "funfacts", "Sun", "\"fun-facts\" om sun - Solen, luna - Månene og terra - Jorden")
+	flag.StringVar(&Facts, "funfacts", "Sun", "\"fun-facts\" om sun - Solen, luna - Månene og terra - Jorden")
 	flag.StringVar(&temperatureType, "t", "F", "temperatur i F- fahrenheit, K - kelvin, C - celsius")
 }
 
@@ -53,36 +53,50 @@ func main() {
 	if out == "F" && isFlagPassed("K") {
 		fmt.Println(kelvin, "K is equal to", math.Round(conv.KelvinToFahrenheit(kelvin)*100)/100, "°F")
 	}
+	/*if Facts == "Sun" && isFlagPassed("funfacts") {
 
-	if Fact == "Sun" && isFlagPassed("funfacts") {
-
-		fmt.Println(funfacts.GetFunFacts(Fact))
+		fmt.Println(funfacts.GetFunFacts(Facts))
 	}
 
-	if Fact == "Luna" && isFlagPassed("funfacts") {
-		fmt.Println(funfacts.GetFunFacts(Fact))
+	if Facts == "Luna" && isFlagPassed("funfacts") {
+		fmt.Println(funfacts.GetFunFacts(Facts))
 	}
-	if Fact == "Terra" && isFlagPassed("funfacts") {
-		fmt.Println(funfacts.GetFunFacts((Fact)))
-	}
+	if Facts == "Terra" && isFlagPassed("funfacts") {
+		fmt.Println(funfacts.GetFunFacts((Facts)))
+	}*/
 
-	/*if isFlagPassed("funfacts") && out == ("t") {
-		for _, object := range funfacts.GetFunFacts(Facts) {
-			if temperatureType == "C" && object.Type == "C" {
-				fmt.Println(object.Text, object.Value, object.Type)
+	if isFlagPassed("t") && isFlagPassed("funfacts") {
+		for _, Fact := range funfacts.GetFunFacts(Facts) {
+			if temperatureType == "C" && Fact.Type == "K" {
+				fmt.Println(Fact.Text, Fact.Value, Fact.Type)
 			}
-			//	{
-			//	if fFacts.Type == "K" {
-			//	fmt.Println(fFacts.Fact, fFacts.Value, fFacts.Type)
+			if temperatureType == "C" && Fact.Type == "C" {
+				fmt.Println(Fact.Text, Fact.Value, Fact.Type)
+			}
 		}
+
 	}
 
-	//{Fact: "temperatur i solens kjerne", Value: 15000000, Type: "C"},
-	//	{Fact: "temperatur på ytre lag av solen", Value: 5778, Type: "K"},
-	//},
-	*/
-}
+	/*
 
+		/*if isFlagPassed("funfacts") && out == ("t") {
+			for _, Fact := range funfacts.GetFunFacts(Facts) {
+				if temperatureType == "C" && Fact.Type == "C" {
+					fmt.Println(Fact.Text, Fact.Value, Fact.Type)
+				}
+				//	{
+				//	if fFacts.Type == "K" {
+				//	fmt.Println(fFacts.Fact, fFacts.Value, fFacts.Type)
+			}
+		}
+
+		//{Fact: "temperatur i solens kjerne", Value: 15000000, Type: "C"},
+		//	{Fact: "temperatur på ytre lag av solen", Value: 5778, Type: "K"},
+		//},
+
+	}*/
+
+}
 func isFlagPassed(name string) bool {
 	found := false
 	flag.Visit(func(f *flag.Flag) {
