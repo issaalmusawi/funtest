@@ -12,5 +12,6 @@ Math.Round("funksjon"*100)/100) så ut til å gjøre magien. Så nå skal alt fu
 Testing: 
 kommandolinje instruksjon for testing av konverteringer av temperatur, eksemepl: "./funtest -C 25 -out F" (returnerer 25 C i F)
 
-For funfacts(ikke helt ferdig) : "./funtest -funfacts Terra" (returnerer fakta til jorden)
+//For funfacts(ikke helt ferdig) : "./funtest -funfacts Terra" (returnerer fakta til jorden)
 
+NY for funfacts: "./funtest -t (temptype, foreløpig kun C) -funfact (Sun,Luna,Terra)
